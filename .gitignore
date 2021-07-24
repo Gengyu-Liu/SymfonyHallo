@@ -12,4 +12,4 @@
 
 /nbproject/
 /src/Controller/BlogApiController.php
-/src/Controller/defaultController.php
+/src/Controller/DefaultController.php
