@@ -1,3 +1,49 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+# Rendering a Template Directly from a Route
+# The template ist static (without variables)
+
+privacy:
+    path:          /privacy
+    controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    defaults:
+        # the path of the template to render
+        template:  'static/privacy.html.twig'
+
+        # special options defined by Symfony to set the page cache
+        maxAge:    86400
+        sharedAge: 86400
+
+        # whether or not caching should apply for client caches only
+        private: true
+
+        # optionally you can define some arguments passed to the template
+        context:
+            site_name: 'ACME'
+            theme: 'dark'
+# redirect configuration without a custom controller (no arguments)
+lucky:
+    path: /ln
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+    defaults:
+        # this value can be an absolute path or an absolute URL
+        path: /lucky/number
+        permanent: true
+# redirect configuration without a custom controller (with arguments)     
+page_shortcut:
+    path: /page
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        route: 'blog_list'
+        # optionally you can define some arguments passed to the route
+        page: '1024'
+        # redirections are temporary by default (code 302) but you can make them permanent (code 301)
+        permanent: true
+        # add this to keep the original query string parameters when redirecting
+        keepQueryParams: true
+        # add this to keep the HTTP method when redirecting. The redirect status changes
+        # * for temporary redirects, it uses the 307 status code instead of 302
+        # * for permanent redirects, it uses the 308 status code instead of 301
+        keepRequestMethod: true

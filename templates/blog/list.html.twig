@@ -1,0 +1,38 @@
+{# templates/blog/list.html.twig #}
+{# paramater $page #}
+<p>Your page is {{ page }}</p>
+
+{#Getting the Route Name and Parameters using the Twig global app variable#}
+<p>Username: {{ app.user.username ?? 'No user' }}</p>
+{% if app.debug %}
+    <p>Request method: {{ app.request.method }}</p>
+    <p>Application Environment: {{ app.environment }}</p>
+{% endif %}
+
+{% set route_name = app.request.attributes.get('_route') %}
+
+<p>route_name {{ route_name }}</p>
+
+{% set route_parameters = app.request.attributes.get('_route_params') %}
+<ul>
+{% for key, item in route_parameters %}
+    <li>{{ key }}: {{ item }}</li>
+    {% endfor %}
+</ul>
+{# use this to get all the available attributes (not only routing ones) #}
+{% set all_attributes = app.request.attributes.all %}
+<ul>
+{% for key, attribute in all_attributes %}
+    {% if attribute is iterable %}
+        <ul>
+        {% for keyP, param in attribute %}
+            <li>{{ keyP }}: {{ param }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        {# attribute is probably a string #}
+    <li>{{ key }}: {{ attribute }}</li>
+    {% endif %}
+    
+{% endfor %}
+</ul>
