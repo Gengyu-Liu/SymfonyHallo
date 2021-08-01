@@ -5,7 +5,7 @@
 # Rendering a Template Directly from a Route
 # The template ist static (without variables)
 
-privacy:
+acme_privacy:
     path:          /privacy
     controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
     defaults:
@@ -23,14 +23,16 @@ privacy:
         context:
             site_name: 'ACME'
             theme: 'dark'
+
 # redirect configuration without a custom controller (no arguments)
-lucky:
-    path: /ln
-    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+lucky_number_shortcut:
+    path: /ln 
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
     defaults:
         # this value can be an absolute path or an absolute URL
         path: /lucky/number
         permanent: true
+
 # redirect configuration without a custom controller (with arguments)     
 page_shortcut:
     path: /page

@@ -1,7 +1,8 @@
 <?php
 /**
- * Route Parameters and their validation
+ * Route with Parameters, Parameter Converter and Parameter validation
  * Getting the Route Name and Parameters from Request Object
+ * Route Prefix
  */
 
 namespace App\Controller;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+//Route Prefix
 #[Route('/blog', name: 'blog_')]
 class BlogController extends AbstractController{
     #[Route('/{page<\d+>?1}', name: 'list')]
