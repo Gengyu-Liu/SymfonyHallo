@@ -16,6 +16,9 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    #To enable these new messages set the legacy_error_messages option to false    
+#    form:
+#        legacy_error_messages: false
 
 when@test:
     framework:

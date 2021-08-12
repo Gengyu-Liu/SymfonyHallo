@@ -2,9 +2,15 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Task
 {
+    #[Assert\NotBlank]
     protected $task;
+    #[Assert\NotBlank]
+    #[Assert\Type(\DateTime::class)]
+    #[Assert\GreaterThanOrEqual('-1 minutes')]
     protected $dueDate;
 
     public function getTask(): string
